@@ -102,18 +102,18 @@ def main():
     parser.add_argument("-b", "--browser", type=str, help="provide if you want to use a specific browser", choices=BROWSER_SELECTION)
 
     # Configure command-line argument parser (argument has meaning by just providing it)
-    parser.add_argument("--switchaai", help="add if you login with SWITCH AAI", action="store_true")
-    parser.add_argument("--asvzid", help="add if you login with ASVZ ID", action="store_true")
+    parser.add_argument("--switch", help="add if you login with SWITCH EDU", action="store_true")
+    parser.add_argument("--asvz", help="add if you login with ASVZ ID", action="store_true")
 
     # Convert all arguments (unused ones too) into an 'Namespace' object, from which the arguments can be accessed programmatically
     args = parser.parse_args()
 
-    # Check that only either SWITCH AAI or ASVZ ID is set
-    if args.switchaai and args.asvzid: 
-        logger.error("Provide only one login method: Either pass '--switchaai' or '--asvzid' as an argument, depending on your ASVZ login method. Do not pass both.")
+    # Check that only either SWITCH EDU or ASVZ ID is set
+    if args.switch and args.asvz: 
+        logger.error("Provide only one login method: Either pass '--switch' or '--asvz' as an argument, depending on your ASVZ login method. Do not pass both.")
         return
-    if not args.switchaai and not args.asvzid: 
-        logger.error("Provide a valid login method: Either pass '--switchaai' or '--asvzid' as an argument, depending on your ASVZ login method.")
+    if not args.switch and not args.asvz: 
+        logger.error("Provide a valid login method: Either pass '--switch' or '--asvz' as an argument, depending on your ASVZ login method.")
         return
 
     # Create new browser instance (if a specific browser has been provided)
